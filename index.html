@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belle Full Deck</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icon-add-to-cart.svg" />
+
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body
+    class="bg-[var(--Rose100)] flex flex-col sm:items-start p-[25px] sm:p-[72px] gap-[30px] sm:grid sm:grid-cols-[3fr_1.5fr]"
+  >
+    <section
+      class="mx-auto w-full flex flex-col items-start justify-start gap-[30px]"
+    >
+      <h2 class="font-bold text-[40px]">Desserts</h2>
+
+      <!-- ================================PRODUCT GRID=========================================== -->
+      <!-- We will keep only one Card as a template and call it "product-item" -->
+      <div
+        class="product-grid flex flex-col items-start gap-[24px] sm:grid sm:grid-cols-3"
+      >
+        <!-- By default, all data-* attributes are stored as strings in HTML. -->
+        <!-- The data-index is a placeholder value for the product template before it’s cloned -->
+        <div
+          data-index="-1"
+          class="product-item flex flex-col items-start gap-[35px] hidden"
+        >
+          <div class="relative">
+            <!-- Mobile image(will get its src from JS) -->
+            <img data-mobile-img src="" alt="" class="rounded-xl sm:hidden" />
+
+            <!-- Desktop image(will get its src from JS) -->
+
+            <img
+              data-desktop-img
+              src=""
+              alt=""
+              class="rounded-xl hidden sm:block"
+            />
+
+            <!-- Add to cart button (static structure) -->
+            <div
+              class="add-to bg-[var(--Rose50)] flex items-center justify-center gap-2 py-2.5 w-[160px] border border-[var(--Rose400)] rounded-3xl absolute left-[24%] right-[24%] bottom-[-21.5px] cursor-pointer sm:left-[15%] sm:right-[15%]"
+              tabindex="0"
+            >
+              <img src="./assets/images/icon-add-to-cart.svg" alt="" />
+              <a href="" class="text-[14px] font-semibold text-[var(--Rose900)]"
+                >Add to Cart</a
+              >
+            </div>
+          </div>
+          <div>
+            <h4
+              data-category
+              class="text-[14px] text-[var(--Rose300)] font-normal"
+            >
+              <!-- category injected by JS -->
+            </h4>
+            <p data-name class="font-semibold text-[var(--Rose900)]">
+              <!-- name injected with JS -->
+            </p>
+            <h3 data-price class="text-[var(--Red)] font-semibold">
+              <!-- price injected by JS -->
+            </h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================= CART SECTION ======================================= -->
+    <div>
+      <!-- EMPTY CART view (shown when nothing is in the cart) -->
+      <div
+        class="cart bg-[var(--Rose50)] rounded-xl px-[20px] pt-[25px] pb-[32px] flex flex-col gap-7 w-full mx-auto"
+      >
+        <h3 class="text-[24px] text-[var(--Red)] font-bold">Your Cart (0)</h3>
+        <div class="flex flex-col items-center gap-3 font-semibold">
+          <img src="./assets/images/illustration-empty-cart.svg" alt="" />
+          <h4 class="text-[var(--Rose400)] text-[14px]">
+            Your added items will appear here
+          </h4>
+        </div>
+      </div>
+
+      <!-- FILLED-CART view (initially hidden by JS)-->
+      <div
+        class="cart-fill bg-[var(--Rose50)] rounded-xl p-[20px] flex flex-col gap-1 w-full hidden"
+      >
+        <h3 class="text-[24px] font-bold text-[var(--Red)]">Your Cart (0)</h3>
+
+        <!-- JS will inject all line-items here -->
+        <div></div>
+
+        <!-- Order Total -->
+        <div class="flex items-center justify-between py-4">
+          <p class="text-[14px] font-normal text-[var(--Rose900)]">
+            Order total
+          </p>
+
+          <h2 class="grand-t text-[24px] font-bold text-[var(--Rose900)]">
+            $0.00
+          </h2>
+        </div>
+
+        <!-- Carbon -->
+        <div
+          class="flex items-center justify-center gap-2 p-3 bg-[var(--Rose100)] rounded-md"
+        >
+          <img src="/assets/images/icon-carbon-neutral.svg" alt="" />
+          <p class="text-[14px] font-normal text-[var(--Rose900)]">
+            This is a <span class="font-semibold">carbon-neutral</span> delivery
+          </p>
+        </div>
+
+        <button
+          class="py-3 bg-[var(--Red)] rounded-full text-[var(--Rose50)] mt-5 font-semibold"
+        >
+          Confirm Order
+        </button>
+      </div>
+    </div>
+    <!-- ORDER CONFIRMATION MODAL -->
+
+    <div
+      class="modal-deck bg-[var(--Rose50)] rounded-xl sm:p-[30px] flex flex-col gap-1 max-w-[520px] w-full p-5 hidden"
+    >
+      <div class="flex flex-col items-start gap-3 mb-5">
+        <img src="/assets/images/icon-order-confirmed.svg" alt="" />
+
+        <div>
+          <h2 class="text-[38px] font-bold text-[var(--Rose900)] leading-12">
+            Order Confirmed
+          </h2>
+          <p class="text-[14px] font-normal text-[var(--Rose400)]">
+            We hope you enjoyed your food!
+          </p>
+        </div>
+      </div>
+
+      <!-- This is where JS will inject confirmed items in the cart -->
+      <div class="modal-con p-4 bg-[var(--Rose100)] rounded-md"></div>
+
+      <button
+        class="start-new-order py-3 bg-[var(--Red)] rounded-full text-[var(--Rose50)] mt-5 font-semibold"
+      >
+        Start New Order
+      </button>
+    </div>
+    <!---------------------------------------  -->
+    <script src="./main.js"></script>
+  </body>
+</html>
