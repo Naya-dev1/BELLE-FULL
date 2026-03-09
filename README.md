@@ -1,0 +1,1 @@
+A frontend e-commerce website for browsing and ordering desserts, with a clean and responsive UI built in pure JavaScript, HTML, and Tailwind CSS. Focused on delivering an intuitive shopping experience without a backend dependency.
